@@ -1,0 +1,16 @@
+# Raw data (large EBA extracts; kept locally / on OneDrive per handbook spec, not in git)
+data/
+
+# Literature PDFs (large binaries, tracked separately from code)
+*.pdf
+
+# Python
+venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
