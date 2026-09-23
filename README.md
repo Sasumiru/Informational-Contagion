@@ -24,12 +24,29 @@ they're available at [OneDrive link — add before submission].
    the similarity matrix (NetworkX), computes centrality metrics (weighted
    degree, betweenness, eigenvector, PageRank), and merges in capital ratio
    / total assets from `tr_oth.csv`.
+3. `code/attack_simulation.py` — implements the interaction rule
+   (`risk_transmitted(A -> B) = similarity(A, B) * sensitivity`, with bad
+   news at the trigger bank modeled as a standardized shock of 1) and runs
+   one single-bank attack as an end-to-end test case, flagging banks whose
+   transmitted risk exceeds a stated criterion (`CONTAGION_THRESHOLD`, a
+   fraction of the full shock magnitude). Also defines the sensitivity grid
+   (`SENSITIVITY_GRID`) to be swept in later robustness testing.
+4. `code/statistical_analysis.py` — builds a trigger-side contagion
+   severity measure (banks crossing the threshold when each bank in turn
+   is the trigger, across all 107 banks), then runs OLS (severity ~
+   centrality + CET1 ratio + log total assets, one model per centrality
+   measure) and a logistic classifier with leave-one-out cross-validation
+   on a median-split high/low severity label (RQ2/RQ3). Both include a
+   robustness spec excluding 4 public-sector/municipal funding agencies
+   with structurally elevated capital ratios.
 
 Run in order from the project root:
 
 ```
 venv/Scripts/python.exe code/clean_data.py
 venv/Scripts/python.exe code/network_construction.py
+venv/Scripts/python.exe code/attack_simulation.py
+venv/Scripts/python.exe code/statistical_analysis.py
 ```
 
 Outputs land in `output/processed/` (tracked in git — small derived CSVs,

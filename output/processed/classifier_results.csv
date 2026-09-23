@@ -1,0 +1,9 @@
+centrality_measure,spec,loocv_accuracy
+weighted_degree,full_with_flag,0.8037383177570093
+weighted_degree,excl_public_sector,0.7961165048543689
+betweenness,full_with_flag,0.6542056074766355
+betweenness,excl_public_sector,0.6310679611650486
+eigenvector,full_with_flag,0.8037383177570093
+eigenvector,excl_public_sector,0.7961165048543689
+pagerank,full_with_flag,0.8037383177570093
+pagerank,excl_public_sector,0.8058252427184466
