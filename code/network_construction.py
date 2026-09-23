@@ -1,5 +1,5 @@
 """
-Week 2: Network construction.
+Network construction.
 
 Builds the weighted similarity network from output/processed/similarity_matrix.csv
 (produced by clean_data.py), computes centrality metrics for each bank, and merges

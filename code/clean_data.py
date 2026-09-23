@@ -1,9 +1,11 @@
 """
-Week 1: Data pipeline.
+Data pipeline
 
-Builds the bank-by-sector exposure matrix from the EBA 2025 EU-wide
-Transparency Exercise (tr_cre.csv), normalizes it into exposure shares,
-and computes the cosine similarity matrix used as the contagion network's
+Builds bank-by-sector exposure matrix from EBA 2025 EU-wide
+Transparency Exercise (tr_cre.csv), 
+
+normalizes it into exposure shares,
+and then computes the cosine similarity matrix used as contagion network's
 edge weights.
 
 Outputs (output/processed/):
@@ -16,12 +18,12 @@ Outputs (output/processed/):
 import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 
-DATA_DIR = "data"
-OUTPUT_DIR = "output/processed"
+DATA_DIR = "data"  # folder holding the raw input files (tr_cre.csv, tr_oth.csv, TR_Metadata.xlsx)
+OUTPUT_DIR = "output/processed"  # folder where the cleaned/derived CSVs get written
 
-ITEM = "2521301"       # Credit risk exposure item, broken down by NACE code
-PERIOD = "202506"       # Latest available quarter (June 2025)
-NACE_EXCLUDE = "0"      # "0" = no NACE breakdown available; drop it
+ITEM = "2521301"        # EBA's code for "credit risk exposure by NACE sector" (the raw file mixes many item types together)
+PERIOD = "202506"       # June 2025, the latest quarter available 
+NACE_EXCLUDE = "0"      # EBA's placeholder for "no sector breakdown reported"
 
 
 def load_exposures():

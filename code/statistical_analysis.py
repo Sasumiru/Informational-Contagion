@@ -1,5 +1,5 @@
 """
-task 5: Statistical analysis.
+Statistical analysis.
 
 Builds a trigger-side contagion severity measure:
 
